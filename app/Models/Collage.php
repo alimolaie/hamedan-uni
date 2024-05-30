@@ -9,4 +9,5 @@ class Collage extends Model
 {
     use HasFactory;
     public $table="collages";
+    protected $guarded=[];
 }

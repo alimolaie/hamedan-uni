@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collage;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $collages=Collage::all();
+        return view('users.create',compact('collages'));
     }
 
     /**
@@ -29,7 +31,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
