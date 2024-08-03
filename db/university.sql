@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2024 at 11:50 PM
+-- Generation Time: Jun 01, 2024 at 11:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -88,6 +88,16 @@ CREATE TABLE `collages` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `collages`
+--
+
+INSERT INTO `collages` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'دانشکده برق و کامپیوتر', NULL, NULL),
+(2, 'دانشکده مهندسی نفت', NULL, NULL),
+(3, 'داشکده فیزیک', NULL, NULL),
+(4, 'دانشکده شیمی', '2024-05-29 11:43:55', '2024-05-29 11:43:55');
 
 -- --------------------------------------------------------
 
@@ -476,7 +486,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `role`, `collages_id`) VALUES
-(1, 'علی', 'ali_molaie', '$2y$12$GyrXpgNHx9VTEGhpqXzB3./HxsND/2o2um4.Njzo5RbK9M3FcYzdC', 123, NULL);
+(1, 'علی', 'ali_molaie', '$2y$12$GyrXpgNHx9VTEGhpqXzB3./HxsND/2o2um4.Njzo5RbK9M3FcYzdC', 123, 1),
+(2, 'علی مولایی', 'n', '$2y$12$MdbPwZjT3op5Tpj4cxfyUeoAndEDf7NLS51efYWxw6BfmJt9.jBJO', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -661,7 +672,7 @@ ALTER TABLE `classroom_location_term`
 -- AUTO_INCREMENT for table `collages`
 --
 ALTER TABLE `collages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `educational_groups`
@@ -739,7 +750,7 @@ ALTER TABLE `time_periods`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

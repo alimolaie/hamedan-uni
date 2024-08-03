@@ -28,25 +28,25 @@
                     <td class="fw-normal text-center align-middle">{{ $row->username }}</td>
                     <td class="fw-normal text-center align-middle">
                             <?php
-                            $role = $user->role;
+                            $role = $row->role;
 
                             $return_value = match ($role) {
                                 1 => 'مسئول آموزش کل',
-                                'bar' => 'This food is a bar',
-                                'cake' => 'This food is a cake',
+                                2 => 'رئیس دانشکده',
+                                3 => 'مدیر گروه',
                                 default =>'مدیر سیستم'
                             };
 
-
+                            echo $return_value;
                             ?>
 
                     </td>
 
                     <td class="fw-normal text-center text-nowrap align-middle">
-                        <a href="{{ route('lessons.edit', ['lesson' => $row->id]) }}" class="btn btn-sm btn-primary">
+                        <a href="{{ route('users.edit',  $row->id) }}" class="btn btn-sm btn-primary">
                             ویرایش
                         </a>
-                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-action="{{ route('lessons.destroy', ['lesson' => $row->id]) }}" data-bs-name="{{ $row->name }}">
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#Modal" data-bs-action="{{ route('users.destroy', $row->id) }}" data-bs-name="{{ $row->name }}">
                             حذف
                         </button>
                     </td>

@@ -5,6 +5,7 @@
             فهرست
         </span>
     </div>
+
     <ul class="list-unstyled pe-0">
         <li class="mb-1">
             <a href="{{ route('dashboard') }}" class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" aria-expanded="false">
@@ -23,7 +24,22 @@
                 </ul>
             </div>
         </li>
+        @if(\Illuminate\Support\Facades\Auth::user()->role==123 or \Illuminate\Support\Facades\Auth::user()->role==1)
         <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" data-bs-toggle="collapse" data-bs-target="#lessons-collapses" aria-expanded="false">
+                <i class="bi bi-users ms-1"></i>
+                کاربران
+            </button>
+            <div class="collapse" id="lessons-collapses" style="">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="{{ route('users.index') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded text-white my-2"><i class="bi bi-chevron-left"></i>همه</a></li>
+                    <li><a href="{{ route('users.create') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded text-white my-2"><i class="bi bi-chevron-left"></i>ایجاد</a></li>
+                </ul>
+            </div>
+        </li>
+        @endif
+        @if(\Illuminate\Support\Facades\Auth::user()->role==123 or \Illuminate\Support\Facades\Auth::user()->role==1 or \Illuminate\Support\Facades\Auth::user()->role==2)
+            <li class="mb-1">
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" data-bs-toggle="collapse" data-bs-target="#lessons-collapse" aria-expanded="false">
                 <i class="bi bi-book ms-1"></i>
                 دروس
@@ -35,18 +51,26 @@
                 </ul>
             </div>
         </li>
+        @endif
+
+        @if(\Illuminate\Support\Facades\Auth::user()->role==123 or \Illuminate\Support\Facades\Auth::user()->role==1 or \Illuminate\Support\Facades\Auth::user()->role==2)
+
         <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" data-bs-toggle="collapse" data-bs-target="#professors-collapse" aria-expanded="false">
-                <i class="bi bi-people ms-1"></i>
-                اساتید
-            </button>
-            <div class="collapse" id="professors-collapse" style="">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="{{ route('professors.index') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded text-white my-2"><i class="bi bi-chevron-left"></i>همه</a></li>
-                    <li><a href="{{ route('professors.create') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded text-white my-2"><i class="bi bi-chevron-left"></i>افزودن</a></li>
-                </ul>
-            </div>
-        </li>
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" data-bs-toggle="collapse" data-bs-target="#professors-collapse" aria-expanded="false">
+                    <i class="bi bi-people ms-1"></i>
+                    اساتید
+                </button>
+                <div class="collapse" id="professors-collapse" style="">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li><a href="{{ route('professors.index') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded text-white my-2"><i class="bi bi-chevron-left"></i>همه</a></li>
+                        <li><a href="{{ route('professors.create') }}" class="link-body-emphasis d-inline-flex text-decoration-none rounded text-white my-2"><i class="bi bi-chevron-left"></i>افزودن</a></li>
+                    </ul>
+                </div>
+            </li>
+        @endif
+
+
+
         <li class="mb-1">
             <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed text-white" data-bs-toggle="collapse" data-bs-target="#time-periods-collapse" aria-expanded="false">
                 <i class="bi bi-clock ms-1"></i>

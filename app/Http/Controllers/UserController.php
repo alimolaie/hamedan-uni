@@ -31,7 +31,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
+        $data=$request->all();
+        User::create($data);
+        return back()->with('success', 'کاربر با موفقیت ایجاد شد!');
     }
 
     /**
@@ -45,24 +47,35 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $collages=Collage::all();
+        $user=User::find($id);
+        return view('users.create',compact('collages','user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $user=User::find($id);
+        $user->name=$request->name;
+        $user->username=$request->username;
+        $user->role=$request->role;
+        $user->collages_id=$request->collages_id;
+        $user->save();
+        return back()->with('success', 'کاربر با موفقیت ویرایش شد!');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $user=User::find($id);
+        $user->delete();
+        return back()->with('success', 'کاربر با موفقیت حذف شد!');
     }
 }
